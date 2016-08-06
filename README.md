@@ -34,7 +34,7 @@ myConsole.LoadFont('path/to/ascii.png', callback);
 ```
 Since the image is loaded asynchronously, the callback is called after the loading is done.
 If you don't want to waste time waiting for this to finish with every new `CanvasConsole`, I
-reccomend referencing the image directly from your html and passing it to the constructor.
+recommend referencing the image directly from your html and passing it to the constructor.
 
 **3. Create a canvas**
 
