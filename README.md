@@ -1,6 +1,8 @@
 # canvas-console
 Lightweight console with 24-bit colors using font based on Windows 7 x 12 bitmap font
 
+*Note: jquery is not required for this project, it is present in the code directory just because the sample project uses it.*
+
 ## Installation
 Simply download the `CanvasConsole.js` and `ascii.png` and reference both in your html with appropriate tags
 ```html
