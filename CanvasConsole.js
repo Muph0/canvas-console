@@ -30,9 +30,22 @@ window.CanvasConsole = function(width, height, img) {
     self.CursorX = 0;
     self.CursorY = 0;
 
-    self.CursorSet = function(x, y) {
-        self.CursorX = x;
-        self.CursorY = y;
+    self.SetCursor = function(x, y)
+    {
+    	if (x instanceof Array && typeof y === 'undefined')
+    	{
+    		self.CursorX = defaultFor(x[0], self.CursorX);
+    		self.CursorY = defaultFor(x[1], self.CursorY);
+    	}
+    	else
+    	{
+    		self.CursorX = defaultFor(x, self.CursorX);
+    		self.CursorY = defaultFor(y, self.CursorY);
+    	}
+    }
+    self.GetCursor = function()
+    {
+    	return [self.CursorX, self.CursorY];
     }
 
     self.LoadFont = function(path_or_img, onload_callback) {
