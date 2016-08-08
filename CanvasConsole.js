@@ -19,7 +19,7 @@ window.CanvasConsole = function(width, height, img) {
     var font_spritesheet = null;
 
     var constructor = function() {
-        if (img instanceof HTMLElement) self.LoadFont();
+        if (img instanceof HTMLElement) self.LoadFont(img, function() {});
     }
 
     ////////////////////
@@ -32,20 +32,20 @@ window.CanvasConsole = function(width, height, img) {
 
     self.SetCursor = function(x, y)
     {
-    	if (x instanceof Array && typeof y === 'undefined')
-    	{
-    		self.CursorX = defaultFor(x[0], self.CursorX);
-    		self.CursorY = defaultFor(x[1], self.CursorY);
-    	}
-    	else
-    	{
-    		self.CursorX = defaultFor(x, self.CursorX);
-    		self.CursorY = defaultFor(y, self.CursorY);
-    	}
+        if (x instanceof Array && typeof y === 'undefined')
+        {
+            self.CursorX = defaultFor(x[0], self.CursorX);
+            self.CursorY = defaultFor(x[1], self.CursorY);
+        }
+        else
+        {
+            self.CursorX = defaultFor(x, self.CursorX);
+            self.CursorY = defaultFor(y, self.CursorY);
+        }
     }
     self.GetCursor = function()
     {
-    	return [self.CursorX, self.CursorY];
+        return [self.CursorX, self.CursorY];
     }
 
     self.LoadFont = function(path_or_img, onload_callback) {
@@ -76,7 +76,7 @@ window.CanvasConsole = function(width, height, img) {
             onload_callback();
         }
 
-        if (path_or_img instanceof HTMLImageElement)
+        if (path_or_img.nodeName === "IMG")
         {
             ascii_charset = path_or_img;
             onload();
@@ -210,7 +210,7 @@ window.CanvasConsole = function(width, height, img) {
     {
         ctx.fillStyle = rgb(self.Background);
         ctx.fillRect(0, 0, width * CHAR_WIDTH, height * CHAR_HEIGHT)
-        self.CursorSet(0,0);
+        self.SetCursor(0,0);
     }
 
 constructor(); }
