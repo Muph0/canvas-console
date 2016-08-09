@@ -49,6 +49,9 @@ window.CanvasConsole = function(width, height, img) {
         return [self.CursorX, self.CursorY];
     }
 
+    self.GetWidth = function() { return width; }
+    self.GetHeight = function() { return height; }
+
     self.LoadFont = function(path_or_img, onload_callback) {
 
         var ascii_charset = null;
