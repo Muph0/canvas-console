@@ -113,8 +113,11 @@ window.CanvasConsole = function(width, height, img) {
         if (document.body === null)
             throw new Error('document.body is null - you should call this method later.')
 
-        parentElement = defaultFor(parentElement, document.body);
-        parentElement.appendChild(canvas);
+        if (parentElement !== null)
+        {
+            parentElement = defaultFor(parentElement, document.body);
+            parentElement.appendChild(canvas);
+        }
         self.Clear();
     }
 
@@ -212,6 +215,20 @@ window.CanvasConsole = function(width, height, img) {
         ctx.fillStyle = rgb(self.Background);
         ctx.fillRect(0, 0, width * CHAR_WIDTH, height * CHAR_HEIGHT)
         self.SetCursor(0,0);
+    }
+    self.ClearRectangle = function(rect_width, rect_height)
+    {
+        ctx.fillStyle = rgb(self.Background);
+        ctx.fillRect(self.CursorX * CHAR_WIDTH, self.CursorY * CHAR_WIDTH, width * CHAR_WIDTH, height * CHAR_HEIGHT)
+    }
+
+    self.WriteImage = function(img)
+    {
+        ctx.drawImage(img, self.CursorX * CHAR_WIDTH, self.CursorY * CHAR_WIDTH);
+    }
+    self.GetCanvas = function()
+    {
+        return canvas;
     }
 
 constructor(); }
