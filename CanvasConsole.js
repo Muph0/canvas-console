@@ -2,6 +2,7 @@
 window.CanvasConsole = function(width, height, img) {
 
     // Constants & aliases
+    var ASCII = "\0☺☻♥♦♣♠•◘○\n♂♀\r♫☼►◄↕‼¶§▬↨↑↓→←∟↔▲▼ !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~⌂ÇüéâäàåçêëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒáíóúñÑªº¿⌐¬½¼¡«»░▒▓│┤╡╢╖╕╣║╗╝╜╛┐└┴┬├─┼╞╟╚╔╩╦╠═╬╧╨╤╥╙╘╒╓╫╪┘┌█▄▌▐▀αßΓπΣσµτΦΘΩδ∞φε∩≡±≥≤⌠⌡÷≈°∙·√ⁿ²■ ";
     var CHAR_WIDTH = 7, CHAR_HEIGHT = 12;
     var self = this;
 
@@ -119,7 +120,7 @@ window.CanvasConsole = function(width, height, img) {
 
     self.DrawChar = function(chr, cx, cy)
     {
-        var index = chr.charCodeAt(0);
+        var index = ASCII.indexOf(chr);
 
         // calc the source location in the font spritesheet
         var x = (index % 64) * CHAR_WIDTH;
