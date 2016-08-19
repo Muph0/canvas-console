@@ -48,6 +48,10 @@ myConsole.CreateCanvas(parent_element);
 myConsole.CreateCanvas();
 // is equivalent to 
 myConsole.CreateCanvas(document.body);
+
+// if you call
+myConsole.CreateCanvas(null);
+// the canvas won't be added to any elements
 ```
 
 **4. Use the console**
@@ -83,3 +87,26 @@ Clear the console and move to [0, 0]:
 ```javascript
 myConsole.Clear();
 ```
+
+Clear rectangle relative to cursor position:
+```javascript
+myConsole.ClearRectangle(rectangle_width, rectangle_height)
+```
+
+Draw image on cursor position:
+```javascript
+myConsole.WriteImage(image)
+```
+
+Get the canvas object
+```javascript
+var myCanvas = myConsole.GetCanvas();
+// returns the HTML canvas object
+```
+
+Get width/height of the console
+```javascript
+var width = myConsole.GetWidth();
+var height = myConsole.GetHeight();
+```
+
